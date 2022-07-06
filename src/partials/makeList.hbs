@@ -1,0 +1,14 @@
+{{#each this}}
+  <li
+    style='list-style: none;
+    display: flex;
+    align-items: center;'
+  >
+    <img
+      src={{this.flags.svg}}
+      alt={{this.name.official}}
+      style='width: 25px;margin-right: 10px;'
+    />
+    <p>{{this.name.official}} </p>
+  </li>
+{{/each}}

@@ -54,30 +54,34 @@ const clearHTML = {
 const onSearchCountry = e => {
   const inputValue = e.target.value.trim();
 
-  fetchCountries(inputValue)
-    .then(data => {
-      if (data.length > 10) {
+  if (inputValue.length !== 0) {
+    fetchCountries(inputValue)
+      .then(data => {
+        if (data.length > 10) {
+          clearHTML.all();
+          Notify.info(Notify_TEXT_INFO);
+          return;
+        }
+
+        if (data.length > 2 && data.length < 10) {
+          clearHTML.info();
+          innerHTMLCountryList(data);
+          return;
+        }
+
+        if (data.length === 1) {
+          clearHTML.list();
+          innerHTMLCountryInfo(data);
+          return;
+        }
+      })
+      .catch(error => {
         clearHTML.all();
-        Notify.info(Notify_TEXT_INFO);
-        return;
-      }
-
-      if (data.length > 2 && data.length < 10) {
-        clearHTML.info();
-        innerHTMLCountryList(data);
-        return;
-      }
-
-      if (data.length === 1) {
-        clearHTML.list();
-        innerHTMLCountryInfo(data);
-        return;
-      }
-    })
-    .catch(error => {
-      clearHTML.all();
-      Notify.failure(error);
-    });
+        Notify.failure(error);
+      });
+  } else {
+    clearHTML.all();
+  }
 };
 
 inputEl.addEventListener('input', debounce(onSearchCountry, DEBOUNCE_DELAY));

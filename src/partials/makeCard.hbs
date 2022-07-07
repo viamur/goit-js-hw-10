@@ -1,27 +1,13 @@
-{{#each this}}
-  <div>
-    <img src={{flags.svg}} alt={{name.official}} style='width: 25px;margin-right: 10px;' />
-    <h2>{{name.official}}</h2>
-  </div>
-  <p><span>Capital:</span>{{capital}}</p>
-  <p><span>Population:</span>{{population}}</p>
-  <p><span>Languages:</span>{{#each languages}} {{this}}, {{/each}}</p>
-{{/each}}
-
-{{!-- capital: Array(1)
-0: "Kyiv"
-length: 1
-[[Prototype]]: Array(0)
-flags:
-png: "https://flagcdn.com/w320/ua.png"
-svg: "https://flagcdn.com/ua.svg"
-[[Prototype]]: Object
-languages:
-ukr: "Ukrainian"
-[[Prototype]]: Object
-name:
-common: "Ukraine"
-nativeName: {ukr: {…}}
-official: "Ukraine"
-[[Prototype]]: Object
-population: 44134693 --}}
+<div
+  style='display: flex;
+    align-items: center;'
+>
+  <img src={{flags}} alt={{name}} style='width: 40px;margin-right: 10px;' />
+  <h2
+    style='margin: 0;
+    font-size: 30px;'
+  >{{name}}</h2>
+</div>
+<p><span style='font-weight:700 ;'>Capital: </span>{{capital}}</p>
+<p><span style='font-weight:700 ;'>Population: </span>{{population}}</p>
+<p><span style='font-weight:700 ;'>Languages: </span>{{languages}} </p>
